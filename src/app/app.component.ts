@@ -4,6 +4,7 @@ import { PeriodicElement } from 'src/models/periodic-element.model';
 import { PeriodicService } from './services/periodic.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { CustomPaginator } from 'src/models/CustomPaginator';
+import { Router, Event, NavigationStart, NavigationCancel, NavigationError, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -22,12 +23,25 @@ export class AppComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   elementsDataList: PeriodicElement[];
   selection = new SelectionModel<PeriodicElement>(true, []);
+  showProgressbar = false;
 
-  constructor(private periodicService: PeriodicService) {
+  constructor(private periodicService: PeriodicService, private router: Router) {
     // load the data
     this.loadElementData();
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.elementsDataList);
+
+    // show progress bar
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+        this.showProgressbar = true;
+      } else if (event instanceof NavigationCancel ||
+                 event instanceof NavigationError ||
+                 event instanceof NavigationEnd) {
+        this.showProgressbar = false;
+
+      }
+    });
   }
 
   ngOnInit() {

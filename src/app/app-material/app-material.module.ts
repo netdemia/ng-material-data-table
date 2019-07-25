@@ -9,6 +9,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -16,7 +17,7 @@ import {MatDividerModule} from '@angular/material/divider';
     BrowserAnimationsModule,
     MatNativeDateModule, MatSnackBarModule, MatIconModule, MatDialogModule,
     MatButtonModule, MatTableModule, MatPaginatorModule , MatSortModule, MatTabsModule,
-    MatCheckboxModule, MatToolbarModule, MatCardModule,
+    MatCheckboxModule, MatToolbarModule, MatCardModule, MatProgressBarModule,
     MatFormFieldModule, MatProgressSpinnerModule, MatInputModule, MatDatepickerModule,
     MatRadioModule, MatSelectModule, MatSliderModule, MatDividerModule
   ],
@@ -24,7 +25,7 @@ import {MatDividerModule} from '@angular/material/divider';
     BrowserAnimationsModule,
     MatNativeDateModule, MatSnackBarModule, MatIconModule, MatDialogModule,
     MatButtonModule, MatTableModule, MatPaginatorModule , MatSortModule, MatTabsModule,
-    MatCheckboxModule, MatToolbarModule, MatCardModule,
+    MatCheckboxModule, MatToolbarModule, MatCardModule, MatProgressBarModule,
     MatFormFieldModule, MatProgressSpinnerModule, MatInputModule, MatDatepickerModule,
     MatRadioModule, MatSelectModule, MatSliderModule, MatDividerModule
   ]
