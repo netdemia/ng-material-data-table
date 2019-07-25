@@ -5,6 +5,7 @@ import { PeriodicService } from './services/periodic.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { CustomPaginator } from 'src/models/CustomPaginator';
 import { Router, Event, NavigationStart, NavigationCancel, NavigationError, NavigationEnd } from '@angular/router';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,8 @@ export class AppComponent implements OnInit {
   selection = new SelectionModel<PeriodicElement>(true, []);
   showProgressbar = false;
 
-  constructor(private periodicService: PeriodicService, private router: Router) {
+  constructor(private periodicService: PeriodicService, private router: Router,
+              private loadingBarService: LoadingBarService) {
     // load the data
     this.loadElementData();
     // Assign the data to the data source for the table to render
@@ -80,8 +82,13 @@ export class AppComponent implements OnInit {
   }
 
   loadElementData() {
+    this.loadingBarService.start();
     this.periodicService.fetchPeriodicElements().subscribe((res: PeriodicElement[]) => {
       this.elementsDataList = res;
+      this.loadingBarService.complete();
+    },
+    err => {
+      this.loadingBarService.stop();
     });
   }
 
