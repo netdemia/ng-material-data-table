@@ -11,6 +11,12 @@ export class PeriodicService {
   constructor() { }
 
   public fetchPeriodicElements(): Observable<PeriodicElement[]> {
+    // delay for 5 seconds
+    const end = new Date().getTime() + 5000;
+    while (new Date().getTime() <= end) {
+
+    }
+
     const elements: PeriodicElement[] = ELEMENT_DATA;
     const simpleObservable = new Observable((observer: Observer<PeriodicElement[]>) => {
       // observable execution
